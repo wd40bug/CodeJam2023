@@ -1,0 +1,115 @@
+<html>
+
+<head>
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <main>
+        <p id="ai"></p>
+        <p id="status"></p>
+        <div id="game_holder">
+            <h1 class="game_children" id="counter">20</h1>
+            <progress class="game_children" id="progress" max="20" value="20"></progress>
+        </div>
+        <br>
+        <button id="1">1</button>
+        <button id="2">2</button>
+        <button id="3">3</button>
+    </main>
+
+</body>
+<script lang="js">
+    but1 = document.getElementById("1")
+    but2 = document.getElementById("2")
+    but3 = document.getElementById("3")
+    ai_status = document.getElementById("ai")
+    status_text = document.getElementById("status")
+    progress = document.getElementById("progress")
+    stick_counter = document.getElementById("counter")
+    sticks = 20
+    function ai() {
+        move = Math.floor(Math.random() * 3) + 1
+        console.log(move)
+        if (verify_play(move)) {
+            update_sticks(sticks - move)
+            ai_status.textContent = "AI played: " + move
+        } else {
+            ai()
+        }
+    }
+    function verify_play(play) {
+        if (play >= sticks) {
+            return false
+        } else {
+            return true
+        }
+    }
+    function update_sticks(update) {
+        sticks = update
+        progress.value = sticks
+        stick_counter.textContent = sticks
+
+    }
+    function check_win() {
+        if (sticks == 1) {
+            return true
+        } else {
+            return false
+        }
+    }
+    but1.addEventListener('click', () => {
+        if (verify_play(1)) {
+            update_sticks(sticks - 1)
+            if (check_win()) {
+                status_text.textContent = "Player Wins"
+            } else {
+                ai()
+                if (check_win()) {
+                    status_text.textContent = "AI Wins"
+                }
+            }
+
+        } else {
+            status_text.textContent = "Invalid Move"
+        }
+
+
+    })
+    but2.addEventListener('click', () => {
+        if (verify_play(2)) {
+            update_sticks(sticks - 2)
+            if (check_win()) {
+                status_text.textContent = "Player Wins"
+            } else {
+                ai()
+                if (check_win()) {
+                    status_text.textContent = "AI Wins"
+                }
+            }
+
+        } else {
+            status_text.textContent = "Invalid Move"
+        }
+    })
+    but3.addEventListener('click', () => {
+        if (verify_play(3)) {
+            update_sticks(sticks - 3)
+            if (check_win()) {
+                status_text.textContent = "Player Wins"
+            } else {
+                ai()
+                if (check_win()) {
+                    status_text.textContent = "AI Wins"
+                }
+            }
+
+        } else {
+            status_text.textContent = "Invalid Move"
+        }
+    })
+
+
+</script>
+
+</html>

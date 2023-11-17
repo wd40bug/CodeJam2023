@@ -1,0 +1,7 @@
+.game_children {
+    display: inline-block;
+}
+
+#ai {
+    background-color: red;
+}
