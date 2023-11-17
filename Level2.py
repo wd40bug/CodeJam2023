@@ -1,5 +1,5 @@
 def triplets(array, target):
-    while sum()
+    #while sum(arrays) < target:
         if (array[1] != array[0]) and (array[1] + array[0] < target):
             #var = position += 1
             triplets(var, target)
