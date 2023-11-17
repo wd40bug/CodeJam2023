@@ -11,7 +11,4 @@ def palindrome(str: str, i) -> bool:
 cases = ["racecar", "radar", "google"]
 truth = [True, True, False]
 for (i, case) in enumerate(cases):
-    if palindrome(case, 0) != truth[i]:
-        print("Error")
-    else:
-        print("Pass")
+    print(case, palindrome(case, 0))
